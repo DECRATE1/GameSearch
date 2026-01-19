@@ -1,0 +1,49 @@
+@import "tailwindcss";
+html[data-scroll-behavior="smooth"] {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Science Gothic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1 {
+  font-size: 60px;
+}
+
+h2 {
+  font-size: 50px;
+}
+
+h3 {
+  font-size: 40px;
+}
+
+h4 {
+  font-size: 30px;
+}
+
+ul {
+  list-style-type: none;
+}
+@theme {
+  --animate-fadein: fadein 2100ms ease-in;
+  @keyframes fadein {
+    0% {
+      transform: translateY(100px);
+    }
+    10% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(0px);
+    }
+    90% {
+      transform: translateY(0px);
+    }
+    100% {
+      transform: translateY(100px);
+    }
+  }
+}
