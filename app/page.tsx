@@ -9,7 +9,6 @@ import SetPageBar from "./components/SetPageBar";
 import { useSearchParams } from "next/navigation";
 import ToolTip from "./components/ToolTip";
 import { useAuth } from "./AuthContext";
-import { useEffect } from "react";
 
 //Главная страница
 
@@ -35,29 +34,33 @@ export default function Home() {
     refetch: true,
   });
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (isAuthorize)
       fetch("http://localhost:3001/api/User/GetRec", {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
         credentials: "include",
       });
-  }, [isAuthorize, token]);
+  }, [isAuthorize, token]);*/
   return (
     <div className="min-h-screen w-screen flex flex-col gap-9 ">
       {isAuthorize && <div>He/She is authorize</div>}
+
       <div className="flex-wrap flex gap-x-4 gap-y-8">
         {!games || games.length === 0 ?
           Array.from({ length: 20 }).map((_, index) => {
             return <CardLoading key={"loading" + index}></CardLoading>;
           })
         : games.map((game, index) => {
+            if (!game.name) return;
             return (
-              <ToolTip key={game.name! + index} label={`${game.name}`}>
+              <ToolTip key={game.name + index} label={`${game.name}`}>
                 <GameCard
                   href={`/Games/${game.id}`}
                   title={game.name!}
                   url={game.imageUrl}
+                  genres={game.genres!}
+                  release={game.released!}
                 ></GameCard>
               </ToolTip>
             );

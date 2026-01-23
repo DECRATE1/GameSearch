@@ -7,7 +7,7 @@ type ToolTipProps = {
 
 export default function ToolTip({ label, children }: ToolTipProps) {
   const [labelIsHidden, setLabelIsHidden] = useState(true);
-  const spanRef = useRef<HTMLSpanElement | null>(null);
+  const spanRef = useRef<HTMLHeadingElement | null>(null);
 
   return (
     <div
@@ -26,9 +26,9 @@ export default function ToolTip({ label, children }: ToolTipProps) {
       }}
       onMouseLeave={() => setLabelIsHidden(true)}
     >
-      <span
+      <h6
         ref={spanRef}
-        className="bg-black rounded-2xl px-2 absolute z-10 transition-opacity pointer-events-none select-none"
+        className="bg-zinc-800 rounded-md p-1 absolute z-10 transition-opacity pointer-events-none select-none"
         style={{
           opacity: labelIsHidden ? 0 : 1,
           transitionDelay: !labelIsHidden ? "1000ms" : "0ms",
@@ -36,7 +36,7 @@ export default function ToolTip({ label, children }: ToolTipProps) {
         }}
       >
         {label}
-      </span>
+      </h6>
 
       {children}
     </div>
