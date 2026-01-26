@@ -20,7 +20,7 @@ appsettings.*.json
 # Папки, создаваемые при публикации
 wwwroot/lib/
 wwwroot/dist/
-wwwroot/avatars/
+wwwroot/avatars
 wwwroot/node_modules/
 
 ## NuGet
