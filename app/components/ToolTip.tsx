@@ -28,7 +28,7 @@ export default function ToolTip({ label, children }: ToolTipProps) {
     >
       <h6
         ref={spanRef}
-        className="bg-zinc-800 rounded-md p-1 absolute z-10 transition-opacity pointer-events-none select-none"
+        className="rounded-md p-1 absolute z-10 transition-opacity pointer-events-none select-none"
         style={{
           opacity: labelIsHidden ? 0 : 1,
           transitionDelay: !labelIsHidden ? "1000ms" : "0ms",

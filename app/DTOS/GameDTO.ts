@@ -16,12 +16,12 @@ export interface GameDto {
   achivements?: number;
   notes?: string;
   developers?: string;
-  categories?: string;
-  genres?: string;
+  categories?: string[];
+  genres?: string[];
   publishers?: string;
   metacriticScore?: number;
   userScore?: number;
   screenshotsUrl?: string;
   movies?: string;
-  tags?: string;
+  tags?: string[];
 }

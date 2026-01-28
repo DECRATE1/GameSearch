@@ -2,13 +2,13 @@ import Link from "next/link";
 
 type HeroProps = {
   name: string;
-  genres?: string;
+  genres?: string[];
   publishers?: string;
   developers?: string;
   webSite?: string;
   url?: URL;
   released?: Date;
-  categories?: string;
+  categories?: string[];
   linuxIsSupported?: boolean;
   macIsSupported?: boolean;
   achivements?: number;
@@ -29,7 +29,6 @@ export default function Hero({
   macIsSupported,
   achivements,
   supportedLanguages,
-  fullAudioLanguages,
   aboutTheGame,
 }: HeroProps) {
   const monthNames = [
@@ -50,7 +49,7 @@ export default function Hero({
     <div className="w-full flex flex-col gap-10 pl-5 uppercase">
       <h1 className="uppercase font-bold flex h-fit w-full">{name}</h1>
       <ul className="flex flex-col gap-2">
-        <li>Жанры: {genres ? genres.split(",").join(", ") : "-"}</li>
+        <li>Жанры: {genres ? genres.join(", ") : "-"}</li>
         <li>Издатели: {publishers ? publishers.split(",").join(", ") : "-"}</li>
         <li>Разработчик: {developers}</li>
         {webSite && (
@@ -66,19 +65,19 @@ export default function Hero({
         )}
         <li>
           Дата релиза:{" "}
-          {released
-            ? released
-                .toString()
-                .slice(0, 10)
-                .split("-")
-                .reverse()
-                .map((el: string, i: number) =>
-                  i == 1 ? monthNames[+el - 1] : el
-                )
-                .join(" ")
-            : "-"}
+          {released ?
+            released
+              .toString()
+              .slice(0, 10)
+              .split("-")
+              .reverse()
+              .map((el: string, i: number) =>
+                i == 1 ? monthNames[+el - 1] : el,
+              )
+              .join(" ")
+          : "-"}
         </li>
-        <li>Категории: {categories?.split(",").join(", ")}</li>
+        {categories && <li>Категории: {categories.join(", ")}</li>}
         <li>
           Устройства: {linuxIsSupported ? "linux, " : ""}
           {macIsSupported ? "mac, " : ""} windows

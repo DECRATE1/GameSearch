@@ -14,7 +14,7 @@ export default function GameCard({
   url?: string;
   title: string;
   release: Date;
-  genres: string;
+  genres: string[];
 }) {
   const [isLoad, setIsLoad] = useState(true);
   const [isOverLink, setItsOverLink] = useState(false);
@@ -62,7 +62,7 @@ export default function GameCard({
               {genres && (
                 <>
                   <li>
-                    Жанр: <p>{genres.split(",")[0]}</p>
+                    Жанр: <p>{genres[0]}</p>
                   </li>
                   <li>
                     Год:{" "}

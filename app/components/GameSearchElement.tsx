@@ -11,7 +11,7 @@ export default function GameSearchElement({
 }: {
   id: string;
   title: string;
-  genre?: string;
+  genre?: string[];
   metacritic?: number;
   url?: string;
 }) {
@@ -33,13 +33,11 @@ export default function GameSearchElement({
         <div className="flex flex-col text-sm w-full max-w-[65%]">
           <span className=" flex items-center text-[1.05rem]">{title}</span>
           <ul className="text-gray-400 text-[0.9rem] flex flex-wrap">
-            {genre
-              ?.split(",")
-              .map((item, index) =>
-                index < genre.split(",").length - 1 ?
-                  <li key={index}>{item}, </li>
-                : <li key={index}>{item}</li>,
-              )}
+            {genre!.map((item, index) =>
+              index < genre!.length - 1 ?
+                <li key={index}>{item}, </li>
+              : <li key={index}>{item}</li>,
+            )}
           </ul>
         </div>
         <span

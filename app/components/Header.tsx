@@ -104,6 +104,13 @@ export default function Header() {
         )}
       </search>
 
+      <nav className="w-fit">
+        <ul>
+          <li>
+            <Link href={"/Recomendations"}>recomendations</Link>
+          </li>
+        </ul>
+      </nav>
       <UserIcon></UserIcon>
     </header>
   );

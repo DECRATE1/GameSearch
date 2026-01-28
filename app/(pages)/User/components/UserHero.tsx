@@ -9,6 +9,7 @@ import SetIconModal from "./SetIconModal";
 import SimpleError from "@/app/components/SimpleError";
 import { GameDto } from "@/app/DTOS/GameDTO";
 import GameCard from "@/app/components/GameCard";
+import ToolTip from "@/app/components/ToolTip";
 
 export default function UserClient() {
   const [err, setErr] = useState<string | null>(null);
@@ -46,10 +47,6 @@ export default function UserClient() {
     setTimeout(() => setErr(null), 2000);
   };
 
-  useEffect(() => {
-    console.log(userData);
-  }, [userData]);
-
   return (
     <div
       className="w-full flex items-center mt-10 flex-col 
@@ -68,13 +65,13 @@ export default function UserClient() {
       <span className="border-t-3 border-gray-500 w-full"></span>
       <div className="w-full h-full flex">
         {userData && userData!.games.length > 0 && (
-          <div className="flex w-full h-full gap-3">
+          <div className="flex-wrap flex gap-x-4 gap-y-8">
             {userData?.games.map((gameData, index) => {
               const game = gameData.game;
               const points = +gameData.points;
               return (
                 <div
-                  className="w-fit h-fit relative"
+                  className="w-fit h-fit relative flex"
                   key={`user game - ${game.id} - ${index}`}
                 >
                   <span
@@ -90,10 +87,13 @@ export default function UserClient() {
                   >
                     {points}
                   </span>
+
                   <GameCard
                     href={`/Games/${game.id}`}
                     url={game.imageUrl}
                     title={game.name!}
+                    release={game.released!}
+                    genres={game.genres!}
                   ></GameCard>
                 </div>
               );

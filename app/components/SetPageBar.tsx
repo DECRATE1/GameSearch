@@ -2,12 +2,11 @@ import Link from "next/link";
 
 export default function SetPageBar({
   numberOfGames,
-  numberOnPage,
   page,
 }: {
   numberOfGames: number;
   numberOnPage?: number;
-  page?: string | null;
+  page?: string | string[];
 }) {
   return (
     <div className="flex gap-2 mb-5">
@@ -51,18 +50,14 @@ export default function SetPageBar({
       [&>li]:cursor-pointer text-center select-none"
       >
         ...
-        <>
-          {numberOnPage && (
-            <li>
-              <Link
-                className="size-full"
-                href={`/?page=${Math.ceil(numberOfGames / numberOnPage) - 1}`}
-              >
-                {Math.ceil(numberOfGames / numberOnPage) - 1}
-              </Link>
-            </li>
-          )}
-        </>
+        <li>
+          <Link
+            className="size-full"
+            href={`/?page=${Math.ceil(numberOfGames / 20) - 1}`}
+          >
+            {Math.ceil(numberOfGames / 20) - 1}
+          </Link>
+        </li>
       </ul>
     </div>
   );
