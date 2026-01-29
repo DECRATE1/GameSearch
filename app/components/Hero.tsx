@@ -17,7 +17,8 @@ export default function Hero() {
     method: "GET",
     autoFetch: true,
     refetch: true,
-    requireCache: false,
+    requireCache: true,
+    cacheExpire: 1800,
   });
 
   return (

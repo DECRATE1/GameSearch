@@ -1,7 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAuth } from "../AuthContext";
-import { run } from "node:test";
-import { json } from "stream/consumers";
 import { useRouter } from "next/navigation";
 
 export default function useFetch<T>({
@@ -12,6 +10,7 @@ export default function useFetch<T>({
   autoFetch,
   refetch,
   requireCache,
+  cacheExpire,
 }: {
   url: string;
   requireToken: boolean;
@@ -21,6 +20,7 @@ export default function useFetch<T>({
   autoFetch: boolean;
   refetch: boolean;
   requireCache: boolean;
+  cacheExpire?: number;
 }) {
   const { token, revoke, error: authErr } = useAuth();
   const [data, setData] = useState<T | null>(null);
@@ -46,7 +46,7 @@ export default function useFetch<T>({
           body,
           headers: header,
           cache: requireCache ? "force-cache" : "no-cache",
-          next: { revalidate: requireCache ? 3600 : false },
+          next: { revalidate: cacheExpire ? cacheExpire : false },
         });
         if (response.ok) {
           const data = await response.json();
