@@ -5,6 +5,7 @@ export const getGame = async (id: string) => {
       `http://localhost:3001/api/Game/GetByGameId/${id}`,
       {
         method: "GET",
+        cache: "force-cache",
       },
     );
 

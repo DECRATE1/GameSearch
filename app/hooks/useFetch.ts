@@ -11,6 +11,7 @@ export default function useFetch<T>({
   method,
   autoFetch,
   refetch,
+  requireCache,
 }: {
   url: string;
   requireToken: boolean;
@@ -19,6 +20,7 @@ export default function useFetch<T>({
   method: "GET" | "PUT" | "POST" | "DELETE";
   autoFetch: boolean;
   refetch: boolean;
+  requireCache: boolean;
 }) {
   const { token, revoke, error: authErr } = useAuth();
   const [data, setData] = useState<T | null>(null);
@@ -43,6 +45,8 @@ export default function useFetch<T>({
           method,
           body,
           headers: header,
+          cache: requireCache ? "force-cache" : "no-cache",
+          next: { revalidate: requireCache ? 3600 : false },
         });
         if (response.ok) {
           const data = await response.json();
@@ -59,7 +63,7 @@ export default function useFetch<T>({
               method: "POST",
               headers: { Authorization: `Bearer ${token}` },
               credentials: "include",
-            }
+            },
           );
           if (response.ok) {
             const body = await response.json();
@@ -72,7 +76,7 @@ export default function useFetch<T>({
         }
       }
     },
-    [authErr, method, requireToken, revoke, router, token, url]
+    [authErr, method, requireToken, revoke, router, token, url],
   );
 
   useEffect(() => {

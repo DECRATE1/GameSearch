@@ -21,6 +21,7 @@ export default function RatingBar({
     body: rating,
     requireToken: true,
     refetch: false,
+    requireCache: false,
   });
   const onClick = (e: MouseEvent<HTMLLIElement, globalThis.MouseEvent>) => {
     const number = +e.currentTarget.innerHTML;

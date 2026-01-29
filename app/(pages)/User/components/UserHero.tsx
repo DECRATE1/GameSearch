@@ -9,7 +9,6 @@ import SetIconModal from "./SetIconModal";
 import SimpleError from "@/app/components/SimpleError";
 import { GameDto } from "@/app/DTOS/GameDTO";
 import GameCard from "@/app/components/GameCard";
-import ToolTip from "@/app/components/ToolTip";
 
 export default function UserClient() {
   const [err, setErr] = useState<string | null>(null);
@@ -25,6 +24,7 @@ export default function UserClient() {
     method: "GET",
     autoFetch: true,
     refetch: true,
+    requireCache: false,
   });
 
   useEffect(() => {

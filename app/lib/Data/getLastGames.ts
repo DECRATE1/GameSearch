@@ -4,6 +4,8 @@ export const getLastGames = async () => {
   try {
     const response = await fetch("http://localhost:3001/api/Game/GetLast", {
       method: "GET",
+      cache: "force-cache",
+      next: { revalidate: 3600 },
     });
     if (response.ok) {
       const body: GameDto[] = await response.json();

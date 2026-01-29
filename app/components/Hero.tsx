@@ -1,6 +1,5 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import { useAuth } from "../AuthContext";
 import useFetch from "../hooks/useFetch";
 import { GameDto } from "../DTOS/GameDTO";
 import CardLoading from "./CardLoading";
@@ -9,7 +8,6 @@ import GameCard from "./GameCard";
 
 export default function Hero() {
   const page = useSearchParams().get("page");
-  const { isAuthorize } = useAuth();
   const { data: games } = useFetch<GameDto[]>({
     url:
       page ?
@@ -19,6 +17,7 @@ export default function Hero() {
     method: "GET",
     autoFetch: true,
     refetch: true,
+    requireCache: false,
   });
 
   return (

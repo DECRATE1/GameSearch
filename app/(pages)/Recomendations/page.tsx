@@ -1,11 +1,8 @@
 "use client";
-
-import CardLoading from "@/app/components/CardLoading";
 import GameCard from "@/app/components/GameCard";
 import ToolTip from "@/app/components/ToolTip";
 import { GameDto } from "@/app/DTOS/GameDTO";
 import useFetch from "@/app/hooks/useFetch";
-import { useEffect } from "react";
 
 export default function RecomendationsPage() {
   const { data: games } = useFetch<GameDto[]>({
@@ -14,6 +11,7 @@ export default function RecomendationsPage() {
     requireToken: true,
     autoFetch: true,
     refetch: false,
+    requireCache: false,
   });
 
   return (

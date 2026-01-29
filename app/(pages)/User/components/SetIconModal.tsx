@@ -15,6 +15,7 @@ export default function SetIconModal({
     requireToken: true,
     autoFetch: false,
     refetch: true,
+    requireCache: false,
   });
 
   const [inputValue, setInputValue] = useState<File | null>();
