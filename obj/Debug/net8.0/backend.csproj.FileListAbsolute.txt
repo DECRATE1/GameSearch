@@ -127,3 +127,4 @@ D:\Projects\GameSearchBackend\obj\Debug\net8.0\refint\backend.dll
 D:\Projects\GameSearchBackend\obj\Debug\net8.0\backend.pdb
 D:\Projects\GameSearchBackend\obj\Debug\net8.0\backend.genruntimeconfig.cache
 D:\Projects\GameSearchBackend\obj\Debug\net8.0\ref\backend.dll
+D:\Projects\GameSearchBackend\obj\Debug\net8.0\backend.sourcelink.json

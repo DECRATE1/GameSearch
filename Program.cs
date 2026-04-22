@@ -65,4 +65,4 @@ app.Use(async (ctx, next) =>
     await next(ctx);
 });
 
-app.Run("http://localhost:3001");
+app.Run("http://0.0.0.0:3001");
