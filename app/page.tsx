@@ -3,7 +3,8 @@ import SetPageBar from "./components/SetPageBar";
 import { getNumberOfGames } from "./lib/Data/getNumberOfGames";
 
 //Главная страница
-
+export const fetchCache = "force-no-store";
+export const dynamic = "force-dynamic";
 export default async function Home({
   searchParams,
 }: {
